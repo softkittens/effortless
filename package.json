@@ -2,7 +2,7 @@
   "name": "effortless",
   "version": "0.0.1",
   "description": "effortless toolkit for svelte apps",
-  "main": "index.js",
+  "main": "lib/index.js",
   "directories": {
     "lib": "lib"
   },
