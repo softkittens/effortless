@@ -1,0 +1,20 @@
+{
+  "name": "effortless",
+  "version": "0.0.1",
+  "description": "effortless toolkit for svelte apps",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie": "^0.4.2",
+    "dotenv": "^16.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "postgres": "github:porsager/postgres#rewrite"
+  }
+}
