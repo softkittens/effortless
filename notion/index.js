@@ -1,4 +1,4 @@
-import { transform } from "./page"
+import { transform } from "./page.js"
 
 const http = (method, endpoint, body) => {
   return fetch('https://api.notion.com/v1/' + endpoint, {
