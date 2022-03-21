@@ -17,6 +17,7 @@ const propertyMaper = {
   'checkbox': (p) => p.checkbox,
   'select': (p) => p.select?.name,
   'files': (p) => p.files[0]?.external.url,
+  'url': (p) => p.url,
   'relation': (p) => p.relation[0]?.id,
   'multi_select': (p) => p.multi_select.map(ms => ms.name)
 }

@@ -1,9 +1,10 @@
 <script>
+  import Paragraph from './Parahraph.svelte'
   export let block;
 </script>
 
 {#if block.type === 'paragraph'}
-  <p>{block.paragraph?.text[0]?.text?.content || ''}</p>
+  <Paragraph paragraph={block.paragraph} />
 {/if}
 
 {#if block.type === 'heading_2'}
