@@ -1,4 +1,4 @@
-import {slugify} from '../lib/utils'
+import {slugify} from '../lib/utils.js'
 
 export const transform = (pages = []) => {
   return pages.map((page) => {
