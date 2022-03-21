@@ -2,26 +2,30 @@ export const transform = (pages = []) => {
   return pages.map((page) => {
     return {
       id: page.id,
-      cover: page.cover.file.url,
+      cover: page.cover?.file.url,
       ...extractProperties(page.properties)
     }
   })
 }
 
+function slugify(text) {
+  return text.toLowerCase().replace(/ /g,"_")
+}
+
+const propertyMaper = {
+  'rich_text': (p) => p.rich_text[0]?.plain_text,
+  'title': (p) => p.title[0]?.text.content,
+  'date': (p) => new Date(p.date.start),
+  'checkbox': (p) => p.checkbox,
+  'select': (p) => p.select?.name,
+  'files': (p) => p.files[0]?.external.url,
+}
+
 function extractProperties(properties) {
+  let result = {}
   for (const key of Object.keys(properties)) {
-    if (properties[key].type === 'rich_text') {
-      properties[key] = properties[key].rich_text[0].plain_text
-    }
-    if (properties[key].type === 'title') {
-      properties[key] = properties[key].title[0].plain_text
-    }
-    if (properties[key].type === 'date') {
-      properties[key] = new Date(properties[key].date.start)
-    }
-    if (properties[key].type === 'checkbox') {
-      properties[key] = properties[key].checkbox
-    }
+    const type = properties[key]?.type
+    result[slugify(key)] = !!propertyMaper[type] ? propertyMaper[type](properties[key]) : null
   }
-  return properties
+  return result
 }
