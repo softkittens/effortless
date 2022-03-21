@@ -25,7 +25,7 @@ function extractProperties(properties) {
   let result = {}
   for (const key of Object.keys(properties)) {
     const type = properties[key]?.type
-    result[slugify(key)] = !!propertyMaper[type] ? propertyMaper[type](properties[key]) : null
+    result[slugify(key, '_')] = !!propertyMaper[type] ? propertyMaper[type](properties[key]) : null
   }
   return result
 }
