@@ -1,3 +1,5 @@
+import {slugify} from '../lib/utils'
+
 export const transform = (pages = []) => {
   return pages.map((page) => {
     return {
@@ -8,10 +10,6 @@ export const transform = (pages = []) => {
   })
 }
 
-function slugify(text) {
-  return text.toLowerCase().replace(/ /g,"_")
-}
-
 const propertyMaper = {
   'rich_text': (p) => p.rich_text[0]?.plain_text,
   'title': (p) => p.title[0]?.text.content,
@@ -19,6 +17,8 @@ const propertyMaper = {
   'checkbox': (p) => p.checkbox,
   'select': (p) => p.select?.name,
   'files': (p) => p.files[0]?.external.url,
+  'relation': (p) => p.relation[0]?.id,
+  'multi_select': (p) => p.multi_select.map(ms => ms.name)
 }
 
 function extractProperties(properties) {

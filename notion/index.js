@@ -1,6 +1,5 @@
 import { transform } from './page.js'
 
-
 const http = (method, endpoint, body) => {
   return fetch('https://api.notion.com/v1/' + endpoint, {
     method,
@@ -21,7 +20,8 @@ export const fetchDatabase = async (id, body) => {
 };
 
 export const fetchPage = async (id) => {
-  return http('GET', `pages/${id}`);
+  const response = await http('GET', `pages/${id}`);
+  return transform([response])[0]
 };
 
 export const fethPageBySlug = async (database, slug) => {
@@ -42,8 +42,7 @@ export const fetchBlocks = async (id) => {
       block.children = await fetchBlocks(block.id);
     }
     if (block.paragraph?.text[0]?.mention?.type === 'page') {
-      const page = await fetchPage(block.paragraph?.text[0]?.mention?.page.id);
-      block.page = transform([page])[0]
+      block.page = await fetchPage(block.paragraph?.text[0]?.mention?.page.id);
     } 
   }
   return blocks;
