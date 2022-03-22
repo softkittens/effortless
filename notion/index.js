@@ -37,13 +37,19 @@ export const fethPageBySlug = async (database, slug) => {
 
 export const fetchBlocks = async (id) => {
   const blocks = await http('GET', `blocks/${id}/children?page_size=100`);
+  let i = 0, response = []
   for await (const block of blocks) {
-    if (block.has_children) {
-      block.children = await fetchBlocks(block.id);
-    }
     if (block.paragraph?.text[0]?.mention?.type === 'page') {
       block.page = await fetchPage(block.paragraph?.text[0]?.mention?.page.id);
-    } 
+    }     
+    if (block.type === 'bulleted_list_item') {
+      response[i] = response[i] || {type: 'bulleted_list_item', items: []}
+      response[i].items.push(block.bulleted_list_item)
+    } else {
+      if(response[i]) i++
+      response[i] = block
+      i++
+    }
   }
-  return blocks;
+  return response;
 };

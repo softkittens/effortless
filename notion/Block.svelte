@@ -33,11 +33,8 @@
 
 {#if block.type === 'bulleted_list_item'}
   <ul>
-    <li>{block.bulleted_list_item.text[0].text.content}</li>
-    {#if block.has_children}
-      {#each block.children as child}
-        <li>{child.bulleted_list_item.text[0].text.content}</li>
-      {/each}
-    {/if}
+    {#each block.items as item}
+      <li>{item.text[0].plain_text}</li>
+    {/each}
   </ul>
 {/if}
