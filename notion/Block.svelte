@@ -1,10 +1,14 @@
 <script>
-  import Paragraph from './Parahraph.svelte'
-  export let block;
+  import Text from './Text.svelte'
+  export let block
 </script>
 
 {#if block.type === 'paragraph'}
-  <Paragraph paragraph={block.paragraph} />
+  <p>
+    {#each block.paragraph.text as text}
+      <Text {text} />
+    {/each}
+  </p>
 {/if}
 
 {#if block.type === 'heading_2'}
@@ -13,10 +17,18 @@
 
 {#if block.type === 'heading_3'}
   <h3>{block.heading_3?.text[0]?.plain_text}</h3>
-{/if} 
+{/if}
 
 {#if block.type === 'image'}
   <img src={block.image?.external?.url} alt="" />
+{/if}
+
+{#if block.type === 'callout'}
+  <div class="callout {block.callout.color}">
+    {#each block.callout.text as text}
+      <p><Text {text} /></p>
+    {/each}
+  </div>
 {/if}
 
 {#if block.type === 'bulleted_list_item'}
