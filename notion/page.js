@@ -1,6 +1,7 @@
 import {slugify} from '../lib/utils.js'
 
 export const transform = (pages = []) => {
+  if (!pages.length) return {}
   return pages.map((page) => {
     return {
       id: page.id,
@@ -19,7 +20,8 @@ const propertyMaper = {
   'files': (p) => p.files[0]?.external.url,
   'url': (p) => p.url,
   'relation': (p) => p.relation[0]?.id,
-  'multi_select': (p) => p.multi_select.map(ms => ms.name)
+  'multi_select': (p) => p.multi_select.map(ms => ms.name),
+  'rollup': (p) => propertyMaper[p.rollup.array[0].type](p.rollup.array[0]),
 }
 
 function extractProperties(properties) {
