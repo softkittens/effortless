@@ -4,13 +4,13 @@ specifiers:
   cookie: ^0.4.2
   dotenv: ^16.0.0
   jsonwebtoken: ^8.5.1
-  postgres: github:porsager/postgres#rewrite
+  postgres: ^3.0.0
 
 dependencies:
   cookie: 0.4.2
   dotenv: 16.0.0
   jsonwebtoken: 8.5.1
-  postgres: github.com/porsager/postgres/ece705a0f47d4967d0d098fa15ddcfc58e31cadd
+  postgres: 3.0.0
 
 packages:
 
@@ -97,6 +97,10 @@ packages:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
     dev: false
 
+  /postgres/3.0.0:
+    resolution: {integrity: sha512-ZCEv0/G04tv+fa9GUhAwa4qLBXoWxG0N+Mia8B0J6/xOIWMZlmSh2F/moxwMRb3enUcyPzNBaBV3ZK2wKd/TFw==}
+    dev: false
+
   /safe-buffer/5.2.1:
     resolution: {integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==}
     dev: false
@@ -104,12 +108,4 @@ packages:
   /semver/5.7.1:
     resolution: {integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==}
     hasBin: true
-    dev: false
-
-  github.com/porsager/postgres/ece705a0f47d4967d0d098fa15ddcfc58e31cadd:
-    resolution: {tarball: https://codeload.github.com/porsager/postgres/tar.gz/ece705a0f47d4967d0d098fa15ddcfc58e31cadd}
-    name: postgres
-    version: 2.0.0-beta.11
-    prepare: true
-    requiresBuild: true
     dev: false

@@ -1,6 +1,6 @@
 {
   "name": "effortless",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "effortless toolkit for svelte apps",
   "main": "lib/index.js",
   "directories": {
@@ -16,6 +16,6 @@
     "cookie": "^0.4.2",
     "dotenv": "^16.0.0",
     "jsonwebtoken": "^8.5.1",
-    "postgres": "github:porsager/postgres#rewrite"
+    "postgres": "^3.0.0"
   }
 }
