@@ -1,12 +1,12 @@
 <script>
   import Text from './Text.svelte'
-  export let block
+  export let block, resolveHref
 </script>
 
 {#if block.type === 'paragraph'}
   <p>
     {#each block.paragraph.text as text}
-      <Text {text} />
+      <Text {text} {resolveHref} />
     {/each}
   </p>
 {/if}

@@ -6,6 +6,7 @@ export const transform = (pages = []) => {
     return {
       id: page.id,
       cover: page.cover?.file.url,
+      database: page.parent?.database_id,
       ...extractProperties(page.properties)
     }
   })
